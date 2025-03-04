@@ -22,10 +22,10 @@ eureka:
 logging:
   level:
     root: error
-    org:
-      springframework:
-        cloud:
-          openfeign: DEBUG
+    # org:
+    #   springframework:
+    #     cloud:
+    #       openfeign: DEBUG
 library:
   book:
     noOfReturnDays: 10
