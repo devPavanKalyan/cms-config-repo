@@ -1,0 +1,39 @@
+server:
+  port: 8080
+
+spring:
+  main:
+    banner-mode: off
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+          lower-case-service-id: true
+      routes:
+        - id: student-service
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/student/**
+        - id: library-service
+          uri: lb://LIBRARY-SERVICE
+          predicates:
+            - Path=/library/**
+        - id: admin-service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+            - Path=/admin/**
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+
+logging:
+  level:
+    eureka: DEBUG
+    root: ERROR
