@@ -21,8 +21,23 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
-
+      
 logging:
   level:
-    root: error
+    root: INFO  # Sets the default logging level to INFO
+    org.springframework: WARN  # Reduces Spring framework logs to avoid clutter
+    cloud.openfeign: DEBUG  # Enables detailed logging for OpenFeign
+    org.hibernate.SQL: DEBUG  # Logs SQL queries for debugging
+    org.cms: DEBUG  # Enables detailed logging for your application packages
+    org.apache: WARN  # Suppresses excessive logging from Apache libraries
+
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  # Improved log format
+    file: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"  
+
+  file:
+    path: logs/application.log  # Saves logs to a file
+    max-size: 10MB  # Limits log file size
+    max-history: 10  # Keeps the last 10 log files
+
 
