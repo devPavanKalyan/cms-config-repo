@@ -27,10 +27,6 @@ spring:
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/api/auth/**
-         - id: academics-service
-          uri: lb://ACADEMICS-SERVICE
-          predicates:
-            - Path=/academics/**
 
 eureka:
   instance:
