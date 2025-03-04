@@ -29,9 +29,15 @@ spring:
             - Path=/api/auth/**
 
 eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 5
+    leaseExpirationDurationInSeconds: 10
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+    registerWithEureka: true
+    fetchRegistry: true
+    registryFetchIntervalSeconds: 5
 
 logging:
   level:
