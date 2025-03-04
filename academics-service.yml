@@ -2,8 +2,6 @@ server:
   port: 8085
 
 spring:
-  application:
-    name: ACADEMICS-SERVICE
   main:
     banner-mode: off
   datasource:
