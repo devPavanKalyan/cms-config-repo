@@ -22,3 +22,7 @@ eureka:
 logging:
   level:
     root: error
+
+    
+total-semester-fee: 20000.0
+total-reimbursement-fee: 10000.0
