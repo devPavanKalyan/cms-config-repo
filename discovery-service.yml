@@ -1,15 +1,12 @@
 server:
   port: 8761
 
-spring:
-  main:
-    banner-mode: off
-
 eureka:
   client:
     fetch-registry: false
     register-with-eureka: false
-
+  server:
+    wait-time-in-ms-when-sync-empty: 0
 logging:
   level:
-    root: ERROR
+    root: error
