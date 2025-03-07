@@ -45,8 +45,8 @@ eureka:
 
 logging:
   level:
-    root: INFO
-    org.springframework: WARN
-    org.hibernate.SQL: DEBUG
-    org.cms: DEBUG
-    org.apache: WARN
+    root: error
+    # org.springframework: WARN
+    # org.hibernate.SQL: DEBUG
+    # org.cms: DEBUG
+    # org.apache: WARN
