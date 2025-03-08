@@ -3,6 +3,7 @@ server:
 spring:
   main:
     allow-circular-references: true
+    allow-bean-definition-overriding: true
     banner-mode: off
   datasource:
     url: jdbc:mysql://localhost:3306/auth
