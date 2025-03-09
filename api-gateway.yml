@@ -11,15 +11,15 @@ spring:
           enabled: true
           lower-case-service-id: true
       routes:
-        - id: student-service
+        - id: student
           uri: lb://STUDENT-SERVICE
           predicates:
             - Path=/student/**
-        - id: library-service
+        - id: library
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/library/**
-        - id: admin-service
+        - id: admin
           uri: lb://ADMIN-SERVICE
           predicates:
             - Path=/admin/**
@@ -27,7 +27,7 @@ spring:
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/api/auth/**
-        - id: academics-service
+        - id: academics
           uri: lb://ACADEMICS-SERVICE
           predicates:
             - Path=/academics/**
