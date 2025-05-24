@@ -19,6 +19,9 @@ spring:
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/library/**
+        - id: library-service
+          uri: lb://LIBRARY-SERVICE
+          predicates:
             - Path=/oauth/lib
         - id: admin-service
           uri: lb://ADMIN-SERVICE
