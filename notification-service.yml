@@ -17,6 +17,18 @@ spring:
     hibernate:
       ddl-auto: update
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+  mail:
+  host: smtp.gmail.com
+  port: 587
+  username: doltnowtestmail@gmail.com
+  password: orbqgupsfzrtdclf
+  protocol: smtp
+  properties:
+    mail:
+      smtp:
+        auth: true
+        starttls:
+          enable: true
 
 eureka:
   client:
