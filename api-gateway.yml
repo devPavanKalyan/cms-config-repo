@@ -16,7 +16,6 @@ spring:
           predicates:
             - Path=/student/**
           filters:
-            - RewritePath= /api/auth/(?<segment>.*), /${segment}
             - name: CircuitBreaker
               args:
                 name: studentServiceCircuit
