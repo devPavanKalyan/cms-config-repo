@@ -65,14 +65,15 @@ spring:
               args:
                 name: academicsServiceCircuit
                 fallbackUri: forward:/fallback/academics
-        - id: academics-service
+
+        - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
           predicates:
             - Path=/notification/**
           filters:
             - name: CircuitBreaker
               args:
-                name: academicsServiceCircuit
+                name: notificationServiceCircuit
                 fallbackUri: forward:/fallback/notification
 
 eureka:
