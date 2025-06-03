@@ -15,18 +15,37 @@ spring:
           uri: lb://STUDENT-SERVICE
           predicates:
             - Path=/student/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: studentServiceCircuit
+                fallbackUri: forward:/fallback/student
+
         - id: library-service
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/library/**
-        - id: library-service
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: libraryServiceCircuit
+                fallbackUri: forward:/fallback/library
+
+        - id: library-service-oauth
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/oauth/lib
+
         - id: admin-service
           uri: lb://ADMIN-SERVICE
           predicates:
             - Path=/admin/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: adminServiceCircuit
+                fallbackUri: forward:/fallback/admin
+
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
@@ -34,12 +53,18 @@ spring:
           filters:
             - name: CircuitBreaker
               args:
-                name: cmsAuthCircuit
+                name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
+
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
           predicates:
             - Path=/academics/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: academicsServiceCircuit
+                fallbackUri: forward:/fallback/academics
 
 eureka:
   instance:
@@ -55,7 +80,3 @@ eureka:
 logging:
   level:
     root: error
-    # org.springframework: WARN
-    # org.hibernate.SQL: DEBUG
-    # org.cms: DEBUG
-    # org.apache: WARN
