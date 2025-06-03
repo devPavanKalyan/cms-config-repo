@@ -46,15 +46,18 @@ spring:
                 name: adminServiceCircuit
                 fallbackUri: forward:/fallback/admin
 
-        - id: auth-service
+       - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/api/auth/**
           filters:
+            - RewritePath=/api/auth/(?<segment>.*), /${segment}
             - name: CircuitBreaker
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
+
+            
                 
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
