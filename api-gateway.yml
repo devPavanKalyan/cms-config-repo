@@ -59,7 +59,7 @@ spring:
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
           predicates:
-            - Path=/academics/**
+            - Path=/academics/**, /api/users/**
           filters:
             - name: CircuitBreaker
               args:
