@@ -82,7 +82,11 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     registryFetchIntervalSeconds: 5
-
+    
 logging:
   level:
     root: error
+    org.springframework.cloud.gateway: DEBUG
+    org.springframework.web.reactive: DEBUG
+    reactor.netty.http.server: DEBUG
+
