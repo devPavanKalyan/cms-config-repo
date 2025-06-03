@@ -46,19 +46,16 @@ spring:
                 name: adminServiceCircuit
                 fallbackUri: forward:/fallback/admin
 
-       - id: auth-service
+        - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
             - Path=/api/auth/**
           filters:
-            - RewritePath=/api/auth/(?<segment>.*), /${segment}
             - name: CircuitBreaker
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
 
-            
-                
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
           predicates:
@@ -69,16 +66,11 @@ spring:
                 name: academicsServiceCircuit
                 fallbackUri: forward:/fallback/academics
 
-
         - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
           predicates:
             - Path=/notification/**
-          # filters:
-          #   - name: CircuitBreaker
-          #     args:
-          #       name: notificationServiceCircuit
-          #       fallbackUri: forward:/fallback/notification
+
 
 eureka:
   instance:
