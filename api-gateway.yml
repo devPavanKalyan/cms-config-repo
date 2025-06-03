@@ -49,13 +49,13 @@ spring:
         - id: auth-service
           uri: lb://AUTH-SERVICE
           predicates:
-            - Path=/api/auth/**, /api/users/**
+            - Path=/api/auth/**
           filters:
             - name: CircuitBreaker
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
-
+                
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
           predicates:
@@ -65,6 +65,7 @@ spring:
               args:
                 name: academicsServiceCircuit
                 fallbackUri: forward:/fallback/academics
+
 
         - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
