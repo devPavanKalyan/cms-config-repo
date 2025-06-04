@@ -4,12 +4,29 @@ server:
 spring:
   main:
     banner-mode: off
+
   cloud:
     gateway:
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins:
+              - "http://localhost:5173"
+            allowedMethods:
+              - GET
+              - POST
+              - PUT
+              - DELETE
+              - OPTIONS
+            allowedHeaders:
+              - "*"
+            allowCredentials: true
+
       discovery:
         locator:
           enabled: true
           lower-case-service-id: true
+
       routes:
         - id: student-service
           uri: lb://STUDENT-SERVICE
@@ -71,7 +88,6 @@ spring:
           predicates:
             - Path=/notification/**
 
-
 eureka:
   instance:
     leaseRenewalIntervalInSeconds: 5
@@ -82,11 +98,10 @@ eureka:
     registerWithEureka: true
     fetchRegistry: true
     registryFetchIntervalSeconds: 5
-    
+
 logging:
   level:
     root: error
     org.springframework.cloud.gateway: DEBUG
     org.springframework.web.reactive: DEBUG
     reactor.netty.http.server: DEBUG
-
