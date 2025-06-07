@@ -1,44 +1,44 @@
-server:
-  port: 8086
+# server:
+#   port: 8086
 
-spring:
-  main:
-    banner-mode: off
+# spring:
+#   main:
+#     banner-mode: off
 
-  application:
-    name: NOTIFICATION-SERVICE
+#   application:
+#     name: NOTIFICATION-SERVICE
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/notifications
-    username: postgres
-    password: root
-    driver-class-name: org.postgresql.Driver
+#   datasource:
+#     url: jdbc:postgresql://localhost:5432/notifications
+#     username: postgres
+#     password: root
+#     driver-class-name: org.postgresql.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+#   jpa:
+#     hibernate:
+#       ddl-auto: update
+#     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
-  mail:
-    host: smtp.gmail.com
-    port: 587
-    username: doltnowtestmail@gmail.com
-    password: orbqgupsfzrtdclf
-    protocol: smtp
-    properties:
-      mail:
-        smtp:
-          auth: true
-          starttls:
-            enable: true
+#   mail:
+#     host: smtp.gmail.com
+#     port: 587
+#     username: doltnowtestmail@gmail.com
+#     password: orbqgupsfzrtdclf
+#     protocol: smtp
+#     properties:
+#       mail:
+#         smtp:
+#           auth: true
+#           starttls:
+#             enable: true
 
-eureka:
-  client:
-    register-with-eureka: true
-    fetch-registry: true
-    serviceUrl:
-      defaultZone: http://localhost:8761/eureka/
+# eureka:
+#   client:
+#     register-with-eureka: true
+#     fetch-registry: true
+#     serviceUrl:
+#       defaultZone: http://localhost:8761/eureka/
 
-logging:
-  level:
-    root: INFO
+# logging:
+#   level:
+#     root: INFO
