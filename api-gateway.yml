@@ -72,6 +72,7 @@ spring:
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
+            - RewritePath=/api/auth/(?<segment>.*), /${segment}
 
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
