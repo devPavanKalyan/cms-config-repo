@@ -76,7 +76,7 @@ spring:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
             # Uncomment this if your controller paths do not include `/api/auth`
-            # - RewritePath=/api/auth/(?<segment>.*), /${segment}
+            - RewritePath=/api/authz/(?<segment>.*), /api/authz/${segment}
 
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
