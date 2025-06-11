@@ -75,7 +75,7 @@ spring:
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
-            # ❌ Use this only if your controller doesn't have "/api/auth" mapping
+            # Uncomment this if your controller paths do not include `/api/auth`
             # - RewritePath=/api/auth/(?<segment>.*), /${segment}
 
         - id: academics-service
@@ -108,6 +108,6 @@ eureka:
 logging:
   level:
     root: error
-    org.springframework.cloud.gateway: DEBUG
-    org.springframework.web.reactive: DEBUG
-    reactor.netty.http.server: DEBUG
+    org.springframework.cloud.gateway: debug
+    org.springframework.web.reactive: debug
+    reactor.netty.http.server: debug
