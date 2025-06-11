@@ -71,6 +71,7 @@ spring:
           predicates:
             - Path=/api/auth/**, /api/authz/**
           filters:
+            - PreserveHostHeader
             - name: CircuitBreaker
               args:
                 name: authServiceCircuit
