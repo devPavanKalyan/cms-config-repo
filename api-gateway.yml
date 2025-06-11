@@ -67,7 +67,7 @@ spring:
                 fallbackUri: forward:/fallback/admin
 
         - id: auth-service
-          uri: lb://AUTH-SERVICE
+          uri: http://localhost:8084
           predicates:
             - Path=/api/auth/**, /api/authz/**
           filters:
