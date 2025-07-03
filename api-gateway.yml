@@ -5,6 +5,9 @@ spring:
   main:
     banner-mode: off
 
+  application:
+    name: gateway-service
+
   cloud:
     gateway:
       globalcors:
@@ -41,7 +44,7 @@ spring:
                 name: studentServiceCircuit
                 fallbackUri: forward:/fallback/student
 
-        - id: library-service
+        - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
             - Path=/library/**
@@ -51,7 +54,7 @@ spring:
                 name: libraryServiceCircuit
                 fallbackUri: forward:/fallback/library
 
-        - id: library-service-oauth
+        - id: library-oauth
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/oauth/lib
@@ -65,11 +68,14 @@ spring:
               args:
                 name: adminServiceCircuit
                 fallbackUri: forward:/fallback/admin
-                
+
         - id: search-service
           uri: lb://SEARCH-SERVICE
           predicates:
             - Path=/api/search/**
+          # filters:
+            # - RewritePath=/api/search/(?<segment>.*), /${segment} 
+            # ✅ Required if service expects `/get`, not `/api/search/get`
 
         - id: auth-service
           uri: lb://AUTH-SERVICE
@@ -81,7 +87,8 @@ spring:
               args:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
-            # - RewritePath=/api/authz/(?<segment>.*), /${segment}  # 👈 Important rewrite to match controller path
+            # Optional Rewrite:
+            # - RewritePath=/api/authz/(?<segment>.*), /${segment}
 
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
@@ -99,16 +106,16 @@ spring:
             - Path=/notification/**
 
 eureka:
-  instance:
-    leaseRenewalIntervalInSeconds: 5
-    leaseExpirationDurationInSeconds: 10
-
   client:
-    serviceUrl:
+    service-url:
       defaultZone: http://localhost:8761/eureka/
-    registerWithEureka: true
-    fetchRegistry: true
-    registryFetchIntervalSeconds: 5
+    register-with-eureka: true
+    fetch-registry: true
+    registry-fetch-interval-seconds: 5
+
+  instance:
+    lease-renewal-interval-in-seconds: 5
+    lease-expiration-duration-in-seconds: 10
 
 logging:
   level:
