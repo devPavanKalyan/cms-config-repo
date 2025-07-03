@@ -41,3 +41,6 @@ logging:
   level:
     root: error
     org.springframework.web.reactive.function.client: debug
+    org.springframework.cloud.gateway: DEBUG
+    
+
