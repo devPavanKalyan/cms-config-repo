@@ -1,6 +1,10 @@
 server:
   port: 8087  # ✅ Choose a unique port if running standalone (optional if behind Eureka)
 
+elasticsearch:
+  host: localhost
+  port: 9200
+  
 spring:
   application:
     name: search-service
