@@ -1,0 +1,12 @@
+spring:
+  application:
+    name: search-service
+
+
+elasticsearch:
+  host: localhost
+  port: 9200
+
+
+server:
+  port: 8087
