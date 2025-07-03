@@ -72,7 +72,7 @@ spring:
         - id: search-service
           uri: lb://SEARCH-SERVICE
           predicates:
-            - Path=/api/search/**
+            - Path=/searchit/**
           filters:
             - RewritePath=/api/search/(?<segment>.*), /${segment} 
             # ✅ Required if service expects `/get`, not `/api/search/get`
