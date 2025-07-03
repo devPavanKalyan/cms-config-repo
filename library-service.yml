@@ -4,15 +4,17 @@ server:
 spring:
   main:
     banner-mode: off
+
   datasource:
-    url: jdbc:mysql://localhost:3306/library
-    username: root
+    url: jdbc:postgresql://localhost:5432/library
+    username: postgres
     password: root
-    driver-class-name: com.mysql.cj.jdbc.Driver
+    driver-class-name: org.postgresql.Driver
+
   jpa:
     hibernate:
       ddl-auto: update
-    database-platform: org.hibernate.dialect.MySQL8Dialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
 
 eureka:
   client:
@@ -21,10 +23,8 @@ eureka:
 
 logging:
   level:
-    root: error 
+    root: error
 
 library:
   book:
     noOfReturnDays: 10
-
-
