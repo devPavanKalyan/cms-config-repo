@@ -42,7 +42,7 @@ spring:
                 fallbackUri: forward:/fallback/student
 
         - id: library-service
-          uri: lb://LIBRARY-SERVICE
+          uri: lb://CATALOG-SERVICE
           predicates:
             - Path=/library/**
           filters:
