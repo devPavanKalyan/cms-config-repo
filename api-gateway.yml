@@ -34,72 +34,7 @@ spring:
           lower-case-service-id: true
 
       routes:
-        - id: student-service
-          uri: lb://STUDENT-SERVICE
-          predicates:
-            - Path=/student/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: studentServiceCircuit
-                fallbackUri: forward:/fallback/student
-
-        - id: catalog-service
-          uri: lb://CATALOG-SERVICE
-          predicates:
-            - Path=/library/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: libraryServiceCircuit
-                fallbackUri: forward:/fallback/library
-
-        - id: library-oauth
-          uri: lb://LIBRARY-SERVICE
-          predicates:
-            - Path=/oauth/lib
-
-        - id: admin-service
-          uri: lb://ADMIN-SERVICE
-          predicates:
-            - Path=/admin/**
-          filters:
-            - name: CircuitBreaker
-              args:
-                name: adminServiceCircuit
-                fallbackUri: forward:/fallback/admin
-
-        - id: issue-service
-          uri: lb://ISSUE-SERVICE
-          predicates:
-            - Path=/api/issues/**
-
-        - id: review-service
-          uri: lb://REVIEW-SERVICE
-          predicates:
-            - Path=/api/reviews/**
-
-        - id: search-service
-          uri: lb://SEARCH-SERVICE
-          predicates:
-            - Path=/searchit/**
-          # filters:
-          #   - RewritePath=/api/search/(?<segment>.*), /${segment} 
-            # ✅ Required if service expects `/get`, not `/api/search/get`
-
-        - id: auth-service
-          uri: lb://AUTH-SERVICE
-          predicates:
-            - Path=/api/auth/**, /api/authz/**
-          filters:
-            - PreserveHostHeader
-            - name: CircuitBreaker
-              args:
-                name: authServiceCircuit
-                fallbackUri: forward:/fallback/auth
-            # Optional Rewrite:
-            # - RewritePath=/api/authz/(?<segment>.*), /${segment}
-
+        # ==== Academic Related ====
         - id: academics-service
           uri: lb://ACADEMICS-SERVICE
           predicates:
@@ -110,10 +45,91 @@ spring:
                 name: academicsServiceCircuit
                 fallbackUri: forward:/fallback/academics
 
+        # ==== Admin Related ====
+        - id: admin-service
+          uri: lb://ADMIN-SERVICE
+          predicates:
+            - Path=/admin/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: adminServiceCircuit
+                fallbackUri: forward:/fallback/admin
+
+        # ==== Auth ====
+        - id: auth-service
+          uri: lb://AUTH-SERVICE
+          predicates:
+            - Path=/api/auth/**, /api/authz/**
+          filters:
+            - PreserveHostHeader
+            - name: CircuitBreaker
+              args:
+                name: authServiceCircuit
+                fallbackUri: forward:/fallback/auth
+
+        # ==== Catalog & Category ====
+        - id: catalog-service
+          uri: lb://CATALOG-SERVICE
+          predicates:
+            - Path=/library/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: libraryServiceCircuit
+                fallbackUri: forward:/fallback/library
+
+        - id: categories-service
+          uri: lb://CATEGORIES-SERVICE
+          predicates:
+            - Path=/api/v1/categories/**
+
+        # ==== Dashboard ====
+        - id: dashboard-service
+          uri: lb://DASHBOARD-SERVICE
+          predicates:
+            - Path=/api/v1/dashboards/**
+
+        # ==== Issue Handling ====
+        - id: issue-service
+          uri: lb://ISSUE-SERVICE
+          predicates:
+            - Path=/api/issues/**
+
+        # ==== Notifications ====
         - id: notification-service
           uri: lb://NOTIFICATION-SERVICE
           predicates:
             - Path=/notification/**
+
+        # ==== Review ====
+        - id: review-service
+          uri: lb://REVIEW-SERVICE
+          predicates:
+            - Path=/api/reviews/**
+
+        # ==== Search ====
+        - id: search-service
+          uri: lb://SEARCH-SERVICE
+          predicates:
+            - Path=/searchit/**
+
+        # ==== Student ====
+        - id: student-service
+          uri: lb://STUDENT-SERVICE
+          predicates:
+            - Path=/student/**
+          filters:
+            - name: CircuitBreaker
+              args:
+                name: studentServiceCircuit
+                fallbackUri: forward:/fallback/student
+
+        # ==== OAuth Endpoint (internal) ====
+        - id: library-oauth
+          uri: lb://LIBRARY-SERVICE
+          predicates:
+            - Path=/oauth/lib
 
 eureka:
   client:
