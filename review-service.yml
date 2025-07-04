@@ -13,11 +13,20 @@ spring:
     username: postgres
     password: root
 
-  # JDBC-based init is not used for R2DBC, included here just for clarity
+  # This section is only for schema.sql initialization (via JDBC fallback)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/library_reviews_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
   sql:
     init:
       mode: always
+      schema-locations: classpath:schema.sql
+      data-locations: classpath:data.sql
       platform: postgres
+      continue-on-error: true
 
   redis:
     host: localhost
