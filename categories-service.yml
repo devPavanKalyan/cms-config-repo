@@ -6,7 +6,7 @@ spring:
     banner-mode: off
 
   datasource:
-    url: jdbc:postgresql://localhost:5432/category_db
+    url: r2dbc:postgresql://localhost:5432/category_db
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
