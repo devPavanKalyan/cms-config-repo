@@ -16,7 +16,10 @@ spring:
   sql:
     init:
       mode: always
+      schema-locations: classpath:schema.sql
+      # data-locations: classpath:data.sql
       platform: postgres
+      continue-on-error: true
 
   data:
     r2dbc:
