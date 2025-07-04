@@ -2,6 +2,9 @@ server:
   port: 8089
 
 spring:
+  application:
+    name: review-service
+
   main:
     banner-mode: "off"
 
@@ -10,6 +13,7 @@ spring:
     username: postgres
     password: root
 
+  # JDBC-based init is not used for R2DBC, included here just for clarity
   sql:
     init:
       mode: always
@@ -21,6 +25,13 @@ spring:
 
   cache:
     type: redis
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{36} - %msg%n"
 
 eureka:
   client:
