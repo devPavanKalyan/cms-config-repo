@@ -5,16 +5,23 @@ spring:
   main:
     banner-mode: off
 
-  datasource:
+  application:
+    name: categories-service
+
+  r2dbc:
     url: r2dbc:postgresql://localhost:5432/category_db
     username: postgres
     password: root
-    driver-class-name: org.postgresql.Driver
 
-  jpa:
-    hibernate:
-      ddl-auto: update
-    database-platform: org.hibernate.dialect.PostgreSQLDialect
+  sql:
+    init:
+      mode: always
+      platform: postgres
+
+  data:
+    r2dbc:
+      repositories:
+        enabled: true
 
 eureka:
   client:
