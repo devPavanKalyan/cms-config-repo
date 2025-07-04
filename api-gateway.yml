@@ -72,7 +72,7 @@ spring:
         - id: issue-service
           uri: lb://ISSUE-SERVICE
           predicates:
-            - Path=/api/issue/**
+            - Path=/api/issues/**
 
         - id: search-service
           uri: lb://SEARCH-SERVICE
