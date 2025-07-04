@@ -69,6 +69,11 @@ spring:
                 name: adminServiceCircuit
                 fallbackUri: forward:/fallback/admin
 
+        - id: issue-service
+          uri: lb://ISSUE-SERVICE
+          predicates:
+            - Path=/api/issue/**
+
         - id: search-service
           uri: lb://SEARCH-SERVICE
           predicates:
