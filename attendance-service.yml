@@ -1,1 +1,48 @@
 
+server:
+  port: 9999
+
+spring:
+  application:
+    name: attendance-service
+
+  main:
+    banner-mode: "off"
+
+  r2dbc:
+    url: r2dbc:postgresql://localhost:5432/attendance_db
+    username: postgres
+    password: root
+
+  # This section is only for schema.sql initialization (via JDBC fallback)
+  datasource:
+    url: jdbc:postgresql://localhost:5432/attendance_db
+    username: postgres
+    password: root
+    driver-class-name: org.postgresql.Driver
+
+  sql:
+    init:
+      mode: always
+      schema-locations: classpath:schema.sql
+      platform: postgres
+      continue-on-error: true
+
+  redis:
+    host: localhost
+    port: 6379
+
+  cache:
+    type: redis
+
+logging:
+  level:
+    root: INFO
+    org.springframework.web: DEBUG
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: http://localhost:8761/eureka/
