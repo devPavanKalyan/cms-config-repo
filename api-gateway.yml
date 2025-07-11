@@ -130,6 +130,11 @@ spring:
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/oauth/lib
+            
+        - id: attendance-service
+          uri: lb://ATTENDANCE-SERVICE
+          predicates:
+            - Path=/api/attendance
 
 eureka:
   client:
