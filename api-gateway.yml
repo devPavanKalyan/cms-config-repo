@@ -112,7 +112,7 @@ spring:
         - id: search-service
           uri: lb://SEARCH-SERVICE
           predicates:
-            - Path=/searchit/**
+            - Path=/api/search/**
 
         # ==== Student ====
         - id: student-service
