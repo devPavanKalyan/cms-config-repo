@@ -133,11 +133,7 @@ spring:
           uri: lb://ATTENDANCE-SERVICE
           predicates:
             - Path=/api/attendance/**
-        # ==== BFF ====
-        - id: bff-service                    
-          uri: lb://BFF-SERVICE
-          predicates:
-            - Path=/api/bff/**
+        
 
 
 eureka:
