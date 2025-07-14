@@ -1,4 +1,4 @@
-server:
+ mj,fgdgcb xgyu7i'/pserver:
   port: 8080
 
 spring:
@@ -130,11 +130,19 @@ spring:
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/oauth/lib
-            
+
+        # ==== Attendance ====
         - id: attendance-service
           uri: lb://ATTENDANCE-SERVICE
           predicates:
             - Path=/api/attendance/**
+
+        # ==== BFF ====
+        - id: bff-service
+          uri: lb://BFF-SERVICE
+          predicates:
+            - Path=/api/bff/**
+
 
 eureka:
   client:
