@@ -1,4 +1,4 @@
- mj,fgdgcb xgyu7i'/pserver:
+server:
   port: 8080
 
 spring:
@@ -68,7 +68,7 @@ spring:
                 name: authServiceCircuit
                 fallbackUri: forward:/fallback/auth
 
-        # ==== Catalog & Category ====
+        # ==== Catalog & Library ====
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
@@ -113,6 +113,7 @@ spring:
           uri: lb://SEARCH-SERVICE
           predicates:
             - Path=/api/search/**
+
         # ==== Student ====
         - id: student-service
           uri: lb://STUDENT-SERVICE
@@ -123,18 +124,24 @@ spring:
               args:
                 name: studentServiceCircuit
                 fallbackUri: forward:/fallback/student
-        # ==== OAuth Endpoint (internal) ====
+
+        # ==== OAuth Endpoint (Internal) ====
         - id: library-oauth
           uri: lb://LIBRARY-SERVICE
           predicates:
             - Path=/oauth/lib
+
         # ==== Attendance ====
         - id: attendance-service
           uri: lb://ATTENDANCE-SERVICE
           predicates:
             - Path=/api/attendance/**
-        
 
+        # ==== BFF (Backend For Frontend) ====
+        - id: bff-service
+          uri: lb://BFF-SERVICE
+          predicates:
+            - Path=/api/bff/**
 
 eureka:
   client:
