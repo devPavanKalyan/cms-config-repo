@@ -72,7 +72,7 @@ spring:
         - id: catalog-service
           uri: lb://CATALOG-SERVICE
           predicates:
-            - Path=/library/**
+            - Path=/api/catalog/**
           filters:
             - name: CircuitBreaker
               args:
