@@ -24,10 +24,6 @@ spring:
       continue-on-error: false
       encoding: UTF-8
 
-  cloud:
-    config:
-      enabled: false
-
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
