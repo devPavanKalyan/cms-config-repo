@@ -1,4 +1,7 @@
 spring:
+  application:
+    name: department-service
+  
   datasource:
     url: jdbc:mysql://localhost:3306/department_db?useSSL=false&serverTimezone=Asia/Kolkata&allowPublicKeyRetrieval=true
     username: root
