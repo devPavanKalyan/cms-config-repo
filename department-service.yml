@@ -34,10 +34,12 @@ server:
   port: 8089
 
 eureka:
-  register-with-eureka: true
-  fetch-registry: true
-  server:
-    defaultZone: http://localhost:8761/eureka/
+  client:
+    register-with-eureka: true   # Whether this service should register itself
+    fetch-registry: true         # Whether to fetch the registry from Eureka server
+    service-url:
+      defaultZone: http://localhost:8761/eureka/  # Eureka server URL
+
 
 spring:
   profiles:
