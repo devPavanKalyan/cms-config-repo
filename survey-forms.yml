@@ -1,14 +1,12 @@
 spring:
   application:
     name: survey-forms
+
   datasource:
     url: jdbc:postgresql://localhost:5432/survey_forms
     username: postgres
     password: root
     driver-class-name: org.postgresql.Driver
-  cloud:
-    config:
-      enabled: false
 
   jpa:
     hibernate:
@@ -18,12 +16,18 @@ spring:
       hibernate:
         format_sql: true
     database-platform: org.hibernate.dialect.PostgreSQLDialect
+
   sql:
     init:
-      continue-on-error: false
-      schema-locations: classpath:db/schema.sql
-      encoding: UTF-8
       mode: always
+      schema-locations: classpath:db/schema.sql
+      continue-on-error: false
+      encoding: UTF-8
+
+  cloud:
+    config:
+      enabled: false
+
   kafka:
     bootstrap-servers: localhost:9092
     consumer:
@@ -31,10 +35,11 @@ spring:
 
 eureka:
   client:
-    registry-fetch-interval-seconds: 30
     register-with-eureka: true
     fetch-registry: true
+    registry-fetch-interval-seconds: 30
     service-url:
       defaultZone: http://localhost:8761/eureka
+
 server:
   port: 8091
