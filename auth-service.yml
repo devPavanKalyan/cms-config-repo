@@ -24,6 +24,8 @@ spring:
 logging:
   level:
     root: INFO
+recaptcha:
+  secret: 6LeUD7krAAAAAAY_3-YKfduPoJmgLLG9FTFlO2M2
     
 eureka:
   client:
